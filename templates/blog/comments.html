@@ -1,0 +1,6 @@
+{% if comment %}
+    {% for el in comment %}
+        --- {{ el.pub_date }} --- {{ el.author }} : {{ el.comment }}
+        <br>
+    {% endfor %}
+{% endif %}

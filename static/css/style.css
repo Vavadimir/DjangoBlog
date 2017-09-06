@@ -1,0 +1,11 @@
+.pnt_cont{
+    background-color: #0062cc;
+}
+.log_container{
+    display:block;
+    text-align:center;
+    margin:0 auto;
+}
+.log_forms{
+    margin-bottom: 50px;
+}
