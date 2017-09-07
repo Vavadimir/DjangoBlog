@@ -8,12 +8,16 @@ from .models import Posts, Comments
 
 def index(request):
     q = Posts.objects.all()
+    print(type(request.user.groups.all()[0]))
     try:
         title = request.POST['title']
         text = request.POST['post_text']
     except:
         if request.user.is_authenticated():
-            return render(request, 'blog/index.html', {'posts': q, "logged": 1})
+            if str(request.user.groups.all()[0]) == "Editor":
+                return render(request, 'blog/index.html', {'posts': q, "logged": 1, "group": 1})
+            else:
+                return render(request, 'blog/index.html', {'posts': q, "logged": 1})
         else:
             return render(request, 'blog/index.html', {'posts': q})
     else:
@@ -21,7 +25,10 @@ def index(request):
         post = Posts(pub_date=timezone.now(), post_text=text, post_title=title)
         Posts.save(post)
         if request.user.is_authenticated():
-            return render(request, 'blog/index.html', {'posts': q, "logged": 1})
+            if str(request.user.groups.all()[0]) == "Editor":
+                return render(request, 'blog/index.html', {'posts': q, "logged": 1, "group": 1})
+            else:
+                return render(request, 'blog/index.html', {'posts': q, "logged": 1})
         else:
             return render(request, 'blog/index.html', {'posts': q})
     # else:
