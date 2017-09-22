@@ -16,7 +16,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
     <title>Music blog</title>
 
@@ -47,7 +46,10 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static "ie10-viewport-bug-workaround.js" %}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="{% static "js/script.js" %}"></script>
+    {% block special_js %}
+
+    {% endblock %}
+
 
 
 </body></html>

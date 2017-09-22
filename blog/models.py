@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 
+
 class Posts(models.Model):
     pub_date = models.DateTimeField('date published')
     post_text = models.CharField(max_length=2000)

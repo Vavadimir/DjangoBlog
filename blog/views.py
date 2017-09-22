@@ -7,6 +7,8 @@ from .models import Posts, Comments
 
 
 def index(request):
+    """Start page with posts and opportunity for edtiors and superusers to add new"""
+
     q = Posts.objects.all()
     try:
         title = request.POST['title']
@@ -34,6 +36,8 @@ def index(request):
     #     return redirect('login')
 
 def login(request):
+    """Authentication and registration of users"""
+
     try:
         name = request.POST['name']
         passw = request.POST['passw']
@@ -57,6 +61,8 @@ def login(request):
                 return redirect('index')
 
 def postpage(request, post_id):
+    """Page that show all posts"""
+
     q = Posts.objects.all()
     #itel = None
     for el in q:
@@ -69,6 +75,8 @@ def postpage(request, post_id):
         return render(request, 'blog/postpage.html', {'post': el, 'comment': cms})
 
 def postproc(request):
+    """Add comments to posts"""
+
     if request.POST:
         print(request.POST["comm"])
         print(request.POST["path"])
@@ -84,6 +92,8 @@ def postproc(request):
 
 
 def comments(request):
+    """Get all comments to opened post"""
+
     if request.POST:
         post_id = request.POST["path"]
         q = Posts.objects.all()
@@ -95,5 +105,7 @@ def comments(request):
 
 
 def logout_us(request):
+    """Logout active user"""
+
     logout(request)
     return redirect('index')

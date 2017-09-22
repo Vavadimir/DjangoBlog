@@ -47,8 +47,16 @@
         <br/>
         <input type="submit", value="POST">
     </form>
+{% else %}
+    <form action="" method="post" id="form-cmnt">
+    {% csrf_token %}
+    </form>
 {% endif %}
+
 <br/>
 </div>
       <hr>
+{% endblock %}
+{% block special_js %}
+<script src="{% static "js/script.js" %}"></script>
 {% endblock %}
